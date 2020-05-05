@@ -1,27 +1,50 @@
 (function($){
-    function processForm( e ){
+    function processForm(e) {
         var dict = {
-        	Title : this["title"].value,
-        	Director: this["director"].value
+            Title: this["title"].value,
+            Director: this["director"].value
         };
+        $("#create").click(function (e) {
+            $.ajax({
+                url: 'https://localhost:44325/api/movie',
+                dataType: 'json',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    name: document.getElementById("name").value,
+                    tite: document.getElementById("title").value,
+                    director: document.getElementById("director").value,
+                    genre: document.getElementById("genre").value
+                }),
+                success: function (data, textStatus, jQxhr) {
+                    $("#postResult").val("Movie created ok.Id=" + jqXHR.responseText);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $("postResult").val(jqXHR.statusText);
+                    console.log(errorThrown);
+                }
+            });
+            e.preventDefault();
 
-        $.ajax({
-            url: 'https://localhost:44325/api/movie',
-            dataType: 'json',
-            type: 'post',
-            contentType: 'application/json',
-            data: JSON.stringify(dict),
-            success: function( data, textStatus, jQxhr ){
-                $('#response pre').html( data );
-            },
-            error: function( jqXhr, textStatus, errorThrown ){
-                console.log( errorThrown );
-            }
-        });
+            $("#getMovie").click(function (e) {
+                $("#getMovieResult").val("");
+                $.ajax({
+                    contentType: "application/json",
+                    type: "get",
+                    url: "api/movie/" + $("#id").val(),
+                    success: function (data, textStatus, jqXHR) {
+                        $("#getMovieResult").val(data.name);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $("#getMovieResult").val(jqXHR.statusText);
 
-        e.preventDefault();
-    }
 
+
+                    }
+                });
+            });
+        }      
+}
     $('#my-form').submit( processForm );
 })(jQuery);
 
