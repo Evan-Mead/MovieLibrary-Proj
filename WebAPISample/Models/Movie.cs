@@ -12,10 +12,7 @@ namespace WebAPISample.Models
         public string Title { get; set; }
         public string Director { get; set; }
         public string Genre { get; set; }
-<<<<<<< HEAD
-        
-    }
-=======
+       
     } 
->>>>>>> 48d513bc85dc7f66af05315a6a37b7e58fd5c612
+
 }

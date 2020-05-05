@@ -26,13 +26,7 @@ namespace WebAPISample.Controllers
         public IActionResult Get()
         {
             // Retrieve all movies from db logic
-<<<<<<< HEAD
             return Ok(_context.Movies);
-=======
-            //return Ok(new string[] { "movie1 string", "movie2 string" })
-            return Ok(_context.Movies);
-
->>>>>>> cb04210864cbc308d6fa16eb7ba6a6cc9cbef4be
         }
 
         // GET api/movie/5
@@ -41,19 +35,9 @@ namespace WebAPISample.Controllers
         {
             // Retrieve movie by id from db logic
             // return Ok(movie);
-<<<<<<< HEAD
             var movies = _context.Movies.Include(m => m.MovieId).SingleOrDefault(m => m.MovieId == id);
 
             return Ok(movies);
-=======
-
-            //var movie = context.GetMovies(id);
-            //if (movie == null)
-            //{
-            //    return NotFound();
-            //}
-               return Ok();
->>>>>>> cb04210864cbc308d6fa16eb7ba6a6cc9cbef4be
         }
 
         // POST api/movie
@@ -61,7 +45,6 @@ namespace WebAPISample.Controllers
         public IActionResult Post([FromBody]Movie value)
         {
             // Create movie in db logic
-<<<<<<< HEAD
             if (value.MovieId == 0)
             {
                 _context.Movies.Add(value);
@@ -75,10 +58,6 @@ namespace WebAPISample.Controllers
             }
             _context.SaveChanges();
             return Ok(value);
-=======
-            //context.Add(movie);
-            return Ok();
->>>>>>> cb04210864cbc308d6fa16eb7ba6a6cc9cbef4be
         }
 
         // PUT api/movie
@@ -86,17 +65,12 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
-<<<<<<< HEAD
             var movieInDB = _context.Movies.Single(m => m.MovieId == movie.MovieId);
             movieInDB.Title = movie.Title;
             movieInDB.Director = movie.Director;
             movieInDB.Genre = movie.Genre;
             _context.SaveChanges();
             return Ok(movie);
-=======
-
-            return Ok();
->>>>>>> cb04210864cbc308d6fa16eb7ba6a6cc9cbef4be
         }
 
         // DELETE api/movie/5
