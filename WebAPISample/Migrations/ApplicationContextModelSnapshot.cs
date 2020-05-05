@@ -20,7 +20,7 @@ namespace WebAPISample.Migrations
 
             modelBuilder.Entity("WebAPISample.Models.Movie", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -34,42 +34,42 @@ namespace WebAPISample.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("MovieId");
 
                     b.ToTable("Movies");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            MovieId = 1,
                             Director = "Martin Scorsese",
                             Genre = "Drama",
                             Title = "The Departed"
                         },
                         new
                         {
-                            Id = 2,
+                            MovieId = 2,
                             Director = "Christopher Nolan",
                             Genre = "Drama",
                             Title = "The Dark Knight"
                         },
                         new
                         {
-                            Id = 3,
+                            MovieId = 3,
                             Director = "Christopher Nolan",
                             Genre = "Drama",
                             Title = "Inception"
                         },
                         new
                         {
-                            Id = 4,
+                            MovieId = 4,
                             Director = "David Gordon Green",
                             Genre = "Comedy",
                             Title = "Pineapple Express"
                         },
                         new
                         {
-                            Id = 5,
+                            MovieId = 5,
                             Director = "John McTiernan",
                             Genre = "Action",
                             Title = "Die Hard"
