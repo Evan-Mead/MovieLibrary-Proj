@@ -1,8 +1,20 @@
+$(function(){
+    $.get("https://localhost:44325/api/movie", function(data){
+        console.log(data);
+
+        for(let i = 0; i < data.length; i++){
+            $("#MoviesList").append(`<div> ${JSON.stringify(data[i].title)}<div>`);
+        }
+    })
+})
+
+
 (function($){
     function processForm( e ){
         var dict = {
         	Title : this["title"].value,
-        	Director: this["director"].value
+            Director: this["director"].value,
+            Genre: this["genre"].value
         };
 
         $.ajax({
