@@ -15,7 +15,15 @@ namespace WebAPISample.Data
         {
             base.OnModelCreating(modelBuilder);
             // Seed data - needs migration
-           
+            modelBuilder.Entity<Movie>()
+             .HasData(
+                new Movie { Id = 1, Title = "The Departed", Genre = "Drama", Director = "Martin Scorsese" },
+                new Movie { Id = 2, Title = "The Dark Knight", Genre = "Drama", Director = "Christopher Nolan" },
+                new Movie { Id = 3, Title = "Inception", Genre = "Drama", Director = "Christopher Nolan" },
+                new Movie { Id = 4, Title = "Pineapple Express", Genre = "Comedy", Director = "David Gordon Green" },
+                new Movie { Id = 5, Title = "Die Hard", Genre = "Action", Director = "John McTiernan" }
+             );
+
         }
 
         public DbSet<Movie> Movies { get; set; }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPISample.Data;
 using WebAPISample.Models;
 
@@ -14,6 +15,8 @@ namespace WebAPISample.Controllers
     public class MovieController : ControllerBase
     {
         private ApplicationContext _context;
+        private object context;
+
         public MovieController(ApplicationContext context)
         {
             _context = context;
@@ -23,7 +26,9 @@ namespace WebAPISample.Controllers
         public IActionResult Get()
         {
             // Retrieve all movies from db logic
-            return Ok(new string[] { "movie1 string", "movie2 string" });
+            //return Ok(new string[] { "movie1 string", "movie2 string" })
+            return Ok(_context.Movies);
+
         }
 
         // GET api/movie/5
@@ -32,7 +37,13 @@ namespace WebAPISample.Controllers
         {
             // Retrieve movie by id from db logic
             // return Ok(movie);
-            return Ok();
+
+            //var movie = context.GetMovies(id);
+            //if (movie == null)
+            //{
+            //    return NotFound();
+            //}
+               return Ok();
         }
 
         // POST api/movie
@@ -40,6 +51,7 @@ namespace WebAPISample.Controllers
         public IActionResult Post([FromBody]Movie value)
         {
             // Create movie in db logic
+            //context.Add(movie);
             return Ok();
         }
 
@@ -48,6 +60,7 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
+
             return Ok();
         }
 
