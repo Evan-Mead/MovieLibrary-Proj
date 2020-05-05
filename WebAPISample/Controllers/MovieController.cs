@@ -38,12 +38,12 @@ namespace WebAPISample.Controllers
             // Retrieve movie by id from db logic
             // return Ok(movie);
 
-            //var movie = context.GetMovies(id);
+            //var movieInDB = _context.Movies.Single(
             //if (movie == null)
             //{
             //    return NotFound();
             //}
-               return Ok();
+              return Ok();
         }
 
         // POST api/movie
