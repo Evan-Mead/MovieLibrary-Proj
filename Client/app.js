@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3d21c7b69f46133a22c25519a3e07496d114fce6
  $("#getMovieList").append(function(e){
             $("#getMovieListResult").val("");
             $.ajax({
@@ -34,6 +37,7 @@
                  $("#postResult").value(jQuery.statusText);
              }
            });
+<<<<<<< HEAD
         });
 
         function MoviesList(){
@@ -64,3 +68,6 @@ $(function(){
 })
 
 
+=======
+        });
+>>>>>>> 3d21c7b69f46133a22c25519a3e07496d114fce6
