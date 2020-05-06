@@ -44,11 +44,6 @@ namespace WebAPISample.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Movie value)
         {
-<<<<<<< HEAD
-            // Create movie in db logic 
-            return Ok();
-=======
-            // Create movie in db logic
             if (value.MovieId == 0)
             {
                 _context.Movies.Add(value);
@@ -62,7 +57,6 @@ namespace WebAPISample.Controllers
             }
             _context.SaveChanges();
             return Ok(value);
->>>>>>> cdbdffc9b8c7ca94086ef9ac9bc985da0648e0ff
         }
 
         // PUT api/movie
@@ -70,17 +64,12 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
-<<<<<<< HEAD
-
-            return Ok();
-=======
             var movieInDB = _context.Movies.Single(m => m.MovieId == movie.MovieId);
             movieInDB.Title = movie.Title;
             movieInDB.Director = movie.Director;
             movieInDB.Genre = movie.Genre;
             _context.SaveChanges();
             return Ok(movie);
->>>>>>> cdbdffc9b8c7ca94086ef9ac9bc985da0648e0ff
         }
 
         // DELETE api/movie/5
