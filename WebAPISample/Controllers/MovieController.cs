@@ -39,7 +39,7 @@ namespace WebAPISample.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Movie value)
         {
-            // Create movie in db logic
+            // Create movie in db logic 
             return Ok();
         }
 
@@ -48,6 +48,7 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
+
             return Ok();
         }
 
