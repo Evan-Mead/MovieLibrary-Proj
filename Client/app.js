@@ -4,11 +4,10 @@ $(function(){
         console.log(data);
 
         for(let i = 0; i < data.length; i++){
-            $("#MoviesList").append(`<div> ${JSON.stringify(data[i].title)}<div>`);
+            $("#MoviesList").append(`<div> ${JSON.stringify(data[i].title.)}<div>`);
         }
     })
 })
-
 
 (function($){
     function processForm( e ){
