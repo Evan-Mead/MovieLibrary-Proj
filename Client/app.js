@@ -30,49 +30,44 @@
         getMovies();
     })
 
-
+function getMovies(){
+    $.get("https://localhost:44325/api/movie", function(data){
+        console.log(data)
+        for(let i = 0; i < data.length; i++){
+            var movieId= (data[i].movieId);
+            $("#movieList").append(
+                <tr>
+                    <td><center>${JSON.stringify(data[i].title).replace(/\"/g,'')}</center></td>
+                </tr>
+            );
+        }
+    })
+}
                 
         
+})(jQuery);
 
+function displayDetails(movie){
+    var movie2 = movie;
+    $("#my-form").html("");
+    $("#movieList").html("");
+    $("#movieTitle").html(JSON.stringify(movie.title).replace);
+    $("#movieList").append(
+
+    );
+}
+
+function getDetails(id){
+    $.get("https://localhost:44325/api/movie/" + id, function(data){
+        var movie = data;
+        displayDetails(movie);
+    })
+}
 
    
-       $("#create").click(function(e){
-           $.ajax({
-             contentType: "application/json",
-             type: "post",
-             url: "https://localhost:44325/api/movie",
-             data: JSON.stringify({
-                 name: document.getElementById("name").value,
-                 title: document.getElementById("title").value,
-                 director: document.getElementById("director").value,
-                 genre: document.getElementById("genre").value
+      
+        
 
-             }),
-             success: function(data, textStatus, jqXHR){
-                 $("postResult").val("Movie created ok. Id=" + jqXHR.responseText);
-             },
-             error: function(jqXHR, textStatus, errorThrown){
-                 $("#postResult").value(jQuery.statusText);
-             }
-           });
-        });
-
-        function MoviesList(){
-            jQuery.statusText;
-            var data = {
-                movieName: ("name").value(),
-                title: ("title").value(),
-                director: ("director").value(),
-                genre: ("genre").value()
-            };
-
-            $.ajax({
-                contentType: "application/json",
-                type: 'put',
-                url: "https://localhost:44325/api/movie" + MoviesList,
-                data: JSON,
-            })
-        }
           
 
 
