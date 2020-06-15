@@ -1,21 +1,39 @@
-<<<<<<< HEAD
+(function($){
+    function processForm(e){
+        var dict = {
+            Title : this["title"].value,
+            Director: this["director"].value,
+            Genre: this["genre"].value
+        };
 
-=======
->>>>>>> 3d21c7b69f46133a22c25519a3e07496d114fce6
- $("#getMovieList").append(function(e){
-            $("#getMovieListResult").val("");
-            $.ajax({
-                contentType: "application/json",
-                type: "get",
-                url: "https://localhost:44325/api/movie" + $("#id").val(),
-                success: function(data, textStatus, jqXHR){
-                    $("getMovieListResult").val(data.name);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    $("#getMovieListResult").val(jqXHR.statusText);
-                }
-            });
+        $.ajax({
+            url: 'https://localhost:44325/api/movie',
+            dataType: 'json'
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function(data, textStatus, jqXHR){
+                $("#movieList").html("");
+                getMovies();
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(errorThrown);
+            }
         });
+
+        e.preventDefault();
+    }
+
+    $('#my-form').submit(processForm);
+
+    $(function(){
+        getMovies();
+    })
+
+
+                
+        
+
 
    
        $("#create").click(function(e){
@@ -37,7 +55,6 @@
                  $("#postResult").value(jQuery.statusText);
              }
            });
-<<<<<<< HEAD
         });
 
         function MoviesList(){
@@ -52,22 +69,11 @@
             $.ajax({
                 contentType: "application/json",
                 type: 'put',
-                url: "https://localhost:44325/api/movie",
+                url: "https://localhost:44325/api/movie" + MoviesList,
                 data: JSON,
             })
         }
           
-$(function(){
-    $.get("https://localhost:44325/api/movie", function(data){
-        console.log(data);
-
-        for(let i = 0; i < data.length; i++){
-            $("#MoviesList").append(`<div> ${JSON.stringify(data[i].title)}<div>`);
-        }
-    })
-})
 
 
-=======
-        });
->>>>>>> 3d21c7b69f46133a22c25519a3e07496d114fce6
+
