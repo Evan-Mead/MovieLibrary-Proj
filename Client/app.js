@@ -64,6 +64,59 @@ function getDetails(id){
     })
 }
 
+
+
+function updateMovie(title, director, genre){
+    (function(e){
+        var dict = {
+            Title: title,
+            Director: director,
+            Genre: genre
+        };
+
+        $.ajax({
+            url: 'https://localhost:44325/api/movie',
+            dataType: 'json',
+            type: 'put',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function(data, textStatus, jqXHR){
+                $("#movieList").html("");
+                getMovies();
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(errorThrown);
+            }
+        });
+        e.preventDefault();
+    });
+}
+
+function deleteMovie(id){
+    $.ajax({
+        url:'https://localhost:44325/api/movie/' + id,
+        dataType:'json',
+        type: 'Delete',
+        contentType: 'application/json',
+        data: id,
+        success: function(data, textStatus, jqXHR) {
+            $("#movieList").html("");
+            $.get("https://localhost:44325/api/movie", function(data){
+                console.log(data)
+                for(let i =0; i < data.length; i++){
+                    var movieId= (data[i].movieId);
+                    $("#movieList").append(
+
+                    );
+                }
+            })
+        },
+        error:function(jqXHR, textStatus, errorThrown){
+            console.log(errorThrown);
+        }
+    })
+}
+
    
       
         
